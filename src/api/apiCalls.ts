@@ -1,5 +1,5 @@
-import { MiniMovieModel } from "./models/MiniMovieModel";
-import { MovieModel } from "./models/MovieModel";
+import { MiniMovieModel } from "../models/MiniMovieModel";
+import { MovieModel } from "../models/MovieModel";
 
 //API Response models
 interface Response {

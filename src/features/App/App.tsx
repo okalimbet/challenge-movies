@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { getAllMovieData } from './apiCalls';
-import { MiniMovieModel } from './models/MiniMovieModel';
+import { getAllMovieData } from '../../api/apiCalls';
+import { MiniMovieModel } from '../../models/MiniMovieModel';
 
 const App = () => {
 //Todo: update states use
