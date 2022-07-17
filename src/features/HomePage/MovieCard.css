@@ -1,0 +1,31 @@
+.movie-card{
+  height: 18em;
+  width: 11.5em;
+  margin: 1em;
+  position: relative;
+}
+
+.movie-card:hover > .movie-card-title {
+  height: 5em;
+  padding: 1em;
+  width: 9.5em;
+}
+
+.movie-card:focus {
+  display: block;
+}
+
+.movie-card-img {
+  width: inherit;
+}
+
+.movie-card-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 9.5em;
+  color: white;
+  height: 5em;
+  padding: 1em;
+  background-color: rgb(0, 0, 0, 0.6);
+}
