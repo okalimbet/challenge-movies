@@ -5,11 +5,11 @@
 }
 
 .loading-element {
-  height: inherit;
   width: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .ldio-zeuadzs9o1 div {
@@ -20,7 +20,7 @@
   top: 20px;
   left: 20px;
   border-radius: 50%;
-  box-shadow: 0 5px 0 0 #ffde35;
+  box-shadow: 0 5px 0 0 #fff;
   transform-origin: 80px 82.5px;
 }
 .loadingio-spinner-eclipse-mja2fu4o63 {
