@@ -7,20 +7,20 @@ import LoadingElement from '../common/Loading';
 
 const App: React.FC = () => {
 //Todo: update states use
-const [movies, setMovies] = useState<MiniMovieModel[]>([])
-const [errors, setErrors] = useState<string>("")
-const [isLoading, setIsLoading] = useState<boolean>(false)
+const [movies, setMovies] = useState<MiniMovieModel[]>([]);
+const [errors, setErrors] = useState<string>("");
+const [isLoading, setIsLoading] = useState<boolean>(false);
 //Todo: to test api call. Will be updated with new pages
 useEffect(() => {
-  setIsLoading(true)
+  setIsLoading(true);
   getAllMovieData().then((data) => {
-    setIsLoading(false)
+    setIsLoading(false);
     if(data.message === "Success"){
-      setMovies(data?.data)
+      setMovies(data?.data);
     }
   })
   .catch((error: Error) => {
-    setIsLoading(false)
+    setIsLoading(false);
     setErrors(error.message)});
 },[getAllMovieData])
 
@@ -30,7 +30,7 @@ useEffect(() => {
         <LoadingElement/>
       }
       {errors && <div>Errors!</div>}
-      {/* {!!movies.length && <HomePage moviesData={movies}/>} */}
+      {!!movies.length && <HomePage moviesData={movies}/>}
     </div>
   );
 }
