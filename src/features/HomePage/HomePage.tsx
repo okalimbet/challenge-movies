@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { MiniMovieModel } from "../../models/MiniMovieModel"
 import './HomePage.css';
 import HomeHeader from "../HomeHeader/HomeHeader";
@@ -8,24 +8,45 @@ interface HomePageProps {
   moviesData: MiniMovieModel[]
 }
 const HomePage: React.FC<HomePageProps> = ({moviesData}) => {
-  const [filteredMovies, setFilteredMovies] = useState<MiniMovieModel[]>(moviesData)
-  const filterMovies = (genre: string) => {
-    if(genre === "All") {
-      setFilteredMovies(moviesData);
-    } else {
-      const movies = [...moviesData];
-      const updatedListOfMovies = movies?.filter((movie) => {
-        return movie.genres.includes(genre)
-      })
-      setFilteredMovies(updatedListOfMovies);  
-    }
+  const [moviesToDisplay, setMoviesToDisplay] = useState<MiniMovieModel[]>(moviesData)
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [filterSelection, setFilterSelection] = useState<string>("All");
+
+  const recordUserGenreSelection = (genre: string) => {
+    setFilterSelection(genre)
+
   }
+
+  const recordUserSearchInput = (userInput: string) => {
+    setSearchInput(userInput)
+
+  }
+
+  const displayMovies = (searchValue:string, filterValue: string) => {
+    const inputValue = searchValue.trim().toLowerCase();
+      const allmovies = moviesData?.filter((movie) => {
+        let isGenreMatches = true;
+        if(filterValue !== "All") {
+          isGenreMatches = movie.genres?.includes(filterValue);
+        }
+        const isSearchMatches = movie.title.toLowerCase().includes(inputValue);
+        return isGenreMatches && isSearchMatches;
+      })
+
+      console.log("allmovies", allmovies)
+      setMoviesToDisplay(allmovies);
+    }
+
+  useEffect(() => {
+    displayMovies( searchInput, filterSelection);
+  }, [filterSelection, searchInput])
+
   return(
     <section className="home-page">
-      <HomeHeader filterMovies={filterMovies}/>
+      <HomeHeader filterMovies={recordUserGenreSelection} searchMovies={recordUserSearchInput}/>
       <div className="movies-list-wrapper">
         {!moviesData?.length && <div>No data</div>}  
-        {filteredMovies?.length && <MoviesList moviesList={filteredMovies}/>}
+        {<MoviesList moviesList={moviesToDisplay}/>}
       </div>
     </section>)
 }

@@ -6,3 +6,7 @@
   justify-content: center;
   align-items: center;
 }
+
+.movies-list-wrapper {
+  padding: 1em;
+}
