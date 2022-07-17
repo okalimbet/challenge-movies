@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import './HomeHeader.css';
 import '../common/DropDown.css'
 import { DropDown } from "../common/DropDown";
@@ -6,10 +6,10 @@ import { DropDown } from "../common/DropDown";
 interface HomeHeaderProps {
   filterMovies: (genre: string) => void;
   sortMovies?: () => void;
-  searchMovies?: () => void
+  searchMovies: (userInput: string) => void;
 }
 
-const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, sortMovies, searchMovies}) => {
+const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, searchMovies}) => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [selectGenre, setSelectGenre] = useState<string>("");
   
@@ -47,10 +47,10 @@ const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, sortMovies, searchM
     <div style={{color: "white", height: "100%",
     display: "flex", alignItems: "center", marginRight: "1em"}}><p>MOVIES LIBRARY</p></div>
     <div className="actions-group">
-      <div className="fliter-group">
+      <div className="action-group">
         <p style={{color: "white", marginRight: "1em"}}>Genre</p>
         <button
-          className={showDropDown ? "active" : undefined}
+          className={"action-field " + `${showDropDown ? "active" : undefined}`}
           onClick={(): void => toggleDropDown()}
           onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
             dismissHandler(e)
@@ -67,7 +67,20 @@ const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, sortMovies, searchM
           )}
         </button>
       </div>
-      <div>Search</div>
+      <div className="action-group">
+        <p style={{color: "white", marginRight: "1em"}}>Search</p>
+        <label data-testid="search-label"
+          className="label-title"
+          htmlFor="search"></label>
+        <input className="action-field search-input"
+          id="search"
+          type="search"
+          name="search"
+          placeholder="search a title..."
+          onChange={(e) => searchMovies(e.target.value)}
+          autoComplete="off"
+          aria-label="Search through site content"></input>
+      </div>
       <div>Sort</div>
     </div>
 
