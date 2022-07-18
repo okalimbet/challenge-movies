@@ -11,9 +11,14 @@ export const MoviesList: React.FC<MoviesListProps> = ({moviesList}): JSX.Element
     <p>No movies matching your criteria were found.</p>
     </div>
   }
+
+  const handleCardClick = (event: Event, id: string) => {
+    event.stopPropagation();
+    window.location.pathname = `/movie/id/${id}`;
+  }
   return <div className="movies-list">
       {moviesList?.length ? moviesList?.map((singleMovie: MiniMovieModel) => {
-          return <MovieCard key={singleMovie.id} movie={singleMovie}/>
+          return <MovieCard handleCardClick={handleCardClick} key={singleMovie.id} movie={singleMovie}/>
         }) : noMoviesFoundElement()}
     </div>
 }

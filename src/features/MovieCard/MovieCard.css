@@ -1,4 +1,4 @@
-.movie-card{
+.movie-card {
   height: 18em;
   width: 11.5em;
   margin: 1em;
@@ -6,10 +6,13 @@
   background-color: #262525;
 }
 
-.movie-card:hover > .movie-card-title {
-  height: 5em;
-  padding: 1em;
-  width: 9.5em;
+.movie-details-link {
+  height: fit-content;
+}
+
+.movie-card:hover {
+  -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .movie-card:focus {
@@ -38,4 +41,30 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+}
+
+.shadow-drop-center {
+	-webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.45);
+            box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.45);
+  }
+}
+@keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.45);
+            box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.45);
+  }
 }
