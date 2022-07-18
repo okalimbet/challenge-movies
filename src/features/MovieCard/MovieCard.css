@@ -6,6 +6,10 @@
   background-color: #262525;
 }
 
+.movie-details-link {
+  height: fit-content;
+}
+
 .movie-card:hover {
   -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
