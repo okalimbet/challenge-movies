@@ -13,7 +13,7 @@ export const MoviesList: React.FC<MoviesListProps> = ({moviesList}): JSX.Element
   }
   return <div className="movies-list">
       {moviesList?.length ? moviesList?.map((singleMovie: MiniMovieModel) => {
-          return <MovieCard key={singleMovie.id} movie={singleMovie}/>
+          return <MovieCard handleCardClick={() => {}} key={singleMovie.id} movie={singleMovie}/>
         }) : noMoviesFoundElement()}
     </div>
 }
