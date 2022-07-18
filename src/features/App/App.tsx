@@ -5,6 +5,8 @@ import { MiniMovieModel } from '../../models/MiniMovieModel';
 import HomePage from '../HomePage/HomePage';
 import LoadingElement from '../common/Loading';
 import ErrorElement from '../common/ErrorElement';
+import Route from '../common/Route';
+import MovieDetailsView from '../MovieDetailsView/MovieDetailsView';
 
 const App: React.FC = () => {
 
@@ -30,8 +32,19 @@ useEffect(() => {
       {isLoading && 
         <LoadingElement/>
       }
-      {errors && <ErrorElement errorText={errors}/>}
-      {!!movies.length && !errors && <HomePage moviesData={movies}/>}
+      {errors && 
+        <ErrorElement errorText={errors}/>
+      }
+      {!!movies.length && !errors &&
+      <>
+        <Route path="/movie/id">
+          <MovieDetailsView />
+        </Route>
+        <Route path='/movies'>
+          <HomePage moviesData={movies}/>
+        </Route>
+      </>
+      }
     </div>
   );
 }
