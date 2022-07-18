@@ -3,6 +3,7 @@
   width: 11.5em;
   margin: 1em;
   position: relative;
+  background-color: #262525;
 }
 
 .movie-card:hover > .movie-card-title {
@@ -28,4 +29,13 @@
   height: 5em;
   padding: 1em;
   background-color: rgb(0, 0, 0, 0.6);
+}
+
+.default-image {
+  width: 100%;
+  margin-top: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
