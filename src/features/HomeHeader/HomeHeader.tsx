@@ -9,7 +9,7 @@ interface HomeHeaderProps {
   searchMovies: (userInput: string) => void;
 }
 
-const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, searchMovies}) => {
+const HomeHeader:React.FC<HomeHeaderProps> = ({filterMovies, searchMovies}): JSX.Element => {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const [selectGenre, setSelectGenre] = useState<string>("");
   

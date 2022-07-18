@@ -7,7 +7,8 @@ import { MoviesList } from "../MoviesList/MoviesList";
 interface HomePageProps {
   moviesData: MiniMovieModel[]
 }
-const HomePage: React.FC<HomePageProps> = ({moviesData}) => {
+
+const HomePage: React.FC<HomePageProps> = ({moviesData}): JSX.Element => {
   const [moviesToDisplay, setMoviesToDisplay] = useState<MiniMovieModel[]>(moviesData)
   const [searchInput, setSearchInput] = useState<string>("");
   const [filterSelection, setFilterSelection] = useState<string>("All");
@@ -33,7 +34,6 @@ const HomePage: React.FC<HomePageProps> = ({moviesData}) => {
         return isGenreMatches && isSearchMatches;
       })
 
-      console.log("allmovies", allmovies)
       setMoviesToDisplay(allmovies);
     }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import './Loading.css';
  
-const LoadingElement:React.FC = () => {
+const LoadingElement:React.FC = (): JSX.Element => {
   return (
     <div className="loading-element">
       <div className="loadingio-spinner-eclipse-mja2fu4o63">
