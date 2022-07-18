@@ -5,7 +5,7 @@ import './MovieCard.css';
 interface MovieCardProps {
   movie: MiniMovieModel;
 }
-const MovieCard:React.FC<MovieCardProps> = ({movie}) => {
+const MovieCard:React.FC<MovieCardProps> = ({movie}): JSX.Element => {
 
   const validateImageAsset = (path: string) => {
     try {
