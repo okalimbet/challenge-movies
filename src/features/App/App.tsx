@@ -4,13 +4,14 @@ import { getAllMovieData } from '../../api/apiCalls';
 import { MiniMovieModel } from '../../models/MiniMovieModel';
 import HomePage from '../HomePage/HomePage';
 import LoadingElement from '../common/Loading';
+import ErrorElement from '../common/ErrorElement';
 
 const App: React.FC = () => {
-//Todo: update states use
+
 const [movies, setMovies] = useState<MiniMovieModel[]>([]);
 const [errors, setErrors] = useState<string>("");
 const [isLoading, setIsLoading] = useState<boolean>(false);
-//Todo: to test api call. Will be updated with new pages
+
 useEffect(() => {
   setIsLoading(true);
   getAllMovieData().then((data) => {
@@ -29,8 +30,8 @@ useEffect(() => {
       {isLoading && 
         <LoadingElement/>
       }
-      {errors && <div>Errors!</div>}
-      {!!movies.length && <HomePage moviesData={movies}/>}
+      {errors && <ErrorElement errorText={errors}/>}
+      {!!movies.length && !errors && <HomePage moviesData={movies}/>}
     </div>
   );
 }
