@@ -1,19 +1,31 @@
 .movie-details-wrapper {
-  /* background-color: darkcyan; */
-    height: 100%;
     min-width: 400px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .movie-details {
-  background-color: rgb(238, 255, 255);
+  background-color: rgb(240 240 240);
   min-height: 250px;
-  min-width: 400px;
+  width: 700px;
   height: fit-content;
-  min-width: 350px;
-  padding: 0.5em;
+  padding: 1.5em;
+}
+
+.header-group {
+  display: flex;
+  width: 100%;
+}
+
+.movie-title {
+  font-size: 28px;
+}
+
+.movie-release-date {
+  margin-left: 0.5em;
 }
 
 .close-button {
@@ -22,20 +34,37 @@
   width: 20px;
   align-self: flex-end;
   border-radius: 5px;
+  background-color: #c5c5c5;
+  border: 1px solid black;
 }
 
 .close-button:hover {
-  text-decoration: none;
-  border: none;
   background-color: #D2042D;
-
 }
 
-.left-details {
-  width: 200px;
+.subtitle {
+  font-weight: 700;
+  font-size: 12px;
+  margin-right: 0.5em;
 }
-.right-details {
-  width: 200px;
+
+.cast {
+  display: flex; 
+  font-size: 12px;
+  width: 100%;
+  height: fit-content;
+  flex-flow: wrap;
+  margin-top: 2em;
+}
+
+.movie-body {
+  width: 100%;
+  margin-top: 2em;
+}
+
+.movie-description {
+  font-size: 12px;
+  text-align: left;
 }
 
 @media screen and (max-width: 650px) { 
@@ -49,6 +78,7 @@
 
   .movie-details {
     align-items: center;
+    width: 100%;
   }
 
   .left-details {
@@ -59,26 +89,18 @@
     flex-direction: column;
   }
 
-  .movie-release-date {
-    width: 100%;
-    justify-content: center;
-    display: flex;
-  }
-
   .cast {
     display: flex; 
     font-size: 12px;
-    flex-direction: column;
     width: 100%;
-    align-items: center;
-  }
-  .right-details {
-
-    flex-wrap: wrap;
-    margin: 1em 0em;
+    justify-content: left;
+    height: fit-content;
+    flex-flow: wrap;
+    margin-top: 2em;
   }
 
-  .movie-description {
-    font-size: 12px;
+  .movie-body {
+    width: 100%;
+    margin-top: 2em;
   }
 }
