@@ -41,3 +41,6 @@ A website that helps users to find any movie!
 - Add better accessibility
 - Have better ways to return and try again when error happens
 - More flexible routing system
+
+## Note: 
+I wasn't able to locate .zip folder, so I downloaded random images and assigned movie ids to them. I made sure couple of them missing to display a default image instead to match requirements.
