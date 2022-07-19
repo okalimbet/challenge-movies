@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getSingleMovieData } from "../../api/apiCalls";
 import { MovieModel } from "../../models/MovieModel";
+import ErrorElement from "../common/ErrorElement";
+import LoadingElement from "../common/Loading";
 import "./MovieDetailsView.css";
 
 const MovieDetailsView:React.FC = () => {
@@ -14,14 +16,12 @@ const MovieDetailsView:React.FC = () => {
     getSingleMovieData(id).then((data) => {
     setIsLoading(false);
     if(data.message === "success"){
-      console.log("daaa", data.data)
       setMovie(data?.data);
     }
   })
   .catch((error: Error) => {
     setIsLoading(false);
     setErrors(error.message)});
-    console.log("id", id)
   }, []);
 
   const closePage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -30,17 +30,23 @@ const MovieDetailsView:React.FC = () => {
   }
   return (
     <div className="movie-details-wrapper">
-      <div className="movie-details" style={{display: "flex", flexDirection: "column"}}>
-        <button className="close-button" onClick={(e) => closePage(e)} type="button" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-        <div className="header-group">
-          <span className="movie-title">{`${movie?.title || "Unknown"}`}</span>
-          <span className="movie-title movie-release-date">{movie?.releaseYear || "Year is unknown"}</span>
-        </div>
-        
-        <div className="cast">
-        <span className="subtitle" style={{margin: "0.2em"}}>Cast: </span>
+      {isLoading && 
+        <LoadingElement/>
+      }
+      {errors && 
+        <ErrorElement errorText={errors}/>
+      }
+      {movie && !errors &&
+        <div className="movie-details" style={{display: "flex", flexDirection: "column"}}>
+          <button className="close-button" onClick={(e) => closePage(e)} type="button" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <div className="header-group">
+            <span className="movie-title">{`${movie?.title || "Unknown"}`}</span>
+            <span className="movie-title movie-release-date">{movie?.releaseYear || "Year is unknown"}</span>
+          </div>        
+          <div className="cast">
+          <span className="subtitle" style={{margin: "0.2em"}}>Cast: </span>
             {
               movie?.topCast.length && (
                 movie?.topCast.map((cast) => {
@@ -51,15 +57,16 @@ const MovieDetailsView:React.FC = () => {
                 })
               )
             }
-        </div>
-        <div className="movie-info-group" style={{display: "flex", width: "100%"}}>
-          <div className="movie-body">
-          <span className="subtitle">Description: </span>
-            <span className="movie-description">{movie?.description || "No description provided."}
-            </span>
+          </div>
+          <div className="movie-info-group" style={{display: "flex", width: "100%"}}>
+            <div className="movie-body">
+            <span className="subtitle">Description: </span>
+              <span className="movie-description">{movie?.description || "No description provided."}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>)
 }
 
