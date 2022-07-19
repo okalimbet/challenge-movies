@@ -31,7 +31,22 @@
   color: white;
   height: 5em;
   padding: 1em;
-  background-color: rgb(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+}
+
+.movie-card-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgb(16, 15, 15) 55%);
+}
+
+.movie-card-title > p {
+  z-index: 2;
 }
 
 .default-image {

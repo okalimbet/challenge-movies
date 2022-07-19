@@ -5,9 +5,9 @@ import './MovieCard.css';
 
 interface MovieCardProps {
   movie: MiniMovieModel;
-  handleCardClick: (event: Event, id: string) => void;
 }
-const MovieCard:React.FC<MovieCardProps> = ({movie, handleCardClick}): JSX.Element => {
+
+const MovieCard:React.FC<MovieCardProps> = ({movie}): JSX.Element => {
 
   const validateImageAsset = (path: string) => {
     try {
@@ -16,8 +16,9 @@ const MovieCard:React.FC<MovieCardProps> = ({movie, handleCardClick}): JSX.Eleme
      return null;
     }
   };
+
   return (
-    <Link className="movie-details-link" href={`/movie/id/${movie.id}`}>
+    <Link className="movie-details-link" ariaLabel={`Read more about ${movie.title}`} href={`/movie/id/${movie.id}`}>
       <div className="movie-card" onClick={()=>{}}>
           <img className="movie-card-img" src={
             validateImageAsset(movie.id) ? require(`../../assets/${movie.id}.jpeg`) 
