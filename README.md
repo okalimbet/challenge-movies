@@ -1,8 +1,8 @@
 # Movies Library
 
-### [Movies Library Site]()
+### [Movies Library Site](https://challenge-movies.vercel.app/movies)
 
-### [Movies Library Repo]()
+### [Movies Library Repo](https://github.com/scripka/challenge-movies/)
 
 ---
 
@@ -33,3 +33,11 @@ A website that helps users to find any movie!
 - CSS
 - loading.io website for a animated loading icon
 - icons8 to find an error icon
+
+## Roadmap
+- Make website functional on all browsers
+- Provide more detailed instrcution for errors
+- Add pagination
+- Add better accessibility
+- Have better ways to return and try again when error happens
+- More flexible routing system
