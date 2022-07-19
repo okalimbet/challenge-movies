@@ -48,21 +48,12 @@
   }
 }
 
-.search-input {
-  cursor: text;
-}
-
 .search-input:hover {
   color: #000;
   border: 1px solid #0077a4;
+  cursor: text;
 }
 
 .search-input:focus {
-  color: #fff;
-  background-color:#0077a4;
-  
+  background-color:rgb(205, 205, 205);
 } 
-
-.search-input:focus::-webkit-input-placeholder {
-  color: #fff;
-}
